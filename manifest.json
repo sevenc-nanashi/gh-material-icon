@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Material Icon for GitHub",
+  "author": "Nanashi. (@sevenc-nanashi)",
   "version": "1.0",
   "description": "Adds material icon to GitHub.",
   "icons": {
