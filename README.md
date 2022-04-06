@@ -2,6 +2,20 @@
 
 This extension replaces the icon of GitHub with icon in [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)!
 
+## Generating files
+
+### material-icons.json
+
+1. Clone `https://github.com/PKief/vscode-material-icon-theme`
+2. Run `npm install`
+3. Run `npm run generateJson`
+4. Copy `material-icons.json` to extension folder
+
+### languages.json
+
+1. Run `npm install`
+2. Run `npm run build:languages`
+
 ## License
 
 This extension is licensed under the MIT License.
