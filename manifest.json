@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Material Icon for GitHub",
+  "version": "1.0",
+  "description": "Adds material icon to GitHub.",
+  "icons": {
+    "24": "./icons/folder-github.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://github.com/*"],
+      "js": ["icon.js"]
+    }
+  ],
+  "permissions": [
+    "*://*.github.com/*"
+  ]
+
+}
