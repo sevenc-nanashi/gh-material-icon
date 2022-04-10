@@ -3,7 +3,7 @@ const fs = require("fs");
 const target = process.argv[2];
 
 const version = require("./manifest.json").version;
-const distName = `${target}-${version}.xpi`;
+const distName = `${target}-${version}.zip`;
 const archive = archiver.create("zip", {});
 
 try{
