@@ -2,14 +2,22 @@ console.info("%cMaterial Icon for GitHub\n%cCreated by sevenc-nanashi", "font-si
 let baseIconData = {};
 let languageData = {};
 
+function getURL(...arguments){
+  if(typeof browser !== "undefined"){  // Firefox
+    return browser.runtime.getURL(...arguments);
+  }else{  // Chrome
+    return chrome.runtime.getURL(...arguments);
+  }
+}
+
 async function fetchData() {
   Object.assign(
     baseIconData,
-    await (await fetch(browser.runtime.getURL("material-icons.json"))).json()
+    await (await fetch(getURL("material-icons.json"))).json()
   );
   Object.assign(
     languageData,
-    await (await fetch(browser.runtime.getURL("languages.json"))).json()
+    await (await fetch(getURL("languages.json"))).json()
   );
 }
 async function main() {
@@ -51,11 +59,11 @@ async function main() {
       .querySelector('[role="rowheader"] > span > a')
       ?.innerText?.toLowerCase();
     const iconNode = file.querySelector("svg.octicon");
-    iconNode.parentElement.style.transform = `scale(1.25) translateY(-1px)`;
+    iconNode.parentElement.style.transform = `scale(1.25) translateY(-1.5px)`;
 
     if (!name) {
       // Submodule
-      const iconUrl = browser.runtime.getURL(`./icons/folder-git.svg`);
+      const iconUrl = getURL(`./icons/folder-git.svg`);
       iconNode.innerHTML = ``;
       iconNode.style.backgroundImage = `url(${iconUrl})`;
       continue;
@@ -64,7 +72,7 @@ async function main() {
       // If folder
       const folderIcon = iconData.folderNames[name] || "folder";
 
-      const iconUrl = browser.runtime.getURL(`./icons/${folderIcon}.svg`);
+      const iconUrl = getURL(`./icons/${folderIcon}.svg`);
       iconNode.innerHTML = ``;
       iconNode.style.backgroundImage = `url(${iconUrl})`;
     } else {
@@ -85,7 +93,7 @@ async function main() {
         (iconData.iconDefinitions[langaugeName] && langaugeName) ||
         "file";
 
-      const iconUrl = browser.runtime.getURL(
+      const iconUrl = getURL(
         iconData.iconDefinitions[fileIcon].iconPath.replace("../", "")
       );
       iconNode.innerHTML = ``;
